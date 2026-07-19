@@ -58,6 +58,12 @@ Frontend: `http://localhost:5173`
 
 Backend: `http://localhost:5000`
 
+## Deploy on Render
+
+[Deploy to Render](https://render.com/deploy?repo=https://github.com/1amanali2468/nursery-ecommerce-mern)
+
+Render will read `render.yaml` from the repository root. Add `MONGODB_URI` when Render asks for environment variables. The app seeds starter products automatically when the database is empty.
+
 ## API Endpoints
 
 - `GET /api/health`
