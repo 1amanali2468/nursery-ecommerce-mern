@@ -6,3 +6,5 @@ npm-debug.log*
 uploads
 coverage
 .DS_Store
+work/
+outputs/
