@@ -3,7 +3,7 @@ import { ArrowRight, Search, Sprout } from 'lucide-react';
 import { fetchProducts } from '../api.js';
 import ProductCard from '../components/ProductCard.jsx';
 
-const categories = ['All', 'Indoor Plants', 'Outdoor Plants', 'Seeds', 'Planters', 'Care Kits'];
+const categories = ['All', 'Indoor Plants', 'Outdoor Plants', 'Seeds', 'Planters', 'Care Kits', 'Accessories'];
 
 export default function Home() {
   const [products, setProducts] = useState([]);

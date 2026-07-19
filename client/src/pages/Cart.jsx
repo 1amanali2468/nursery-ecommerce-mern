@@ -30,7 +30,7 @@ export default function Cart() {
               <div>
                 <span className="category">{item.category}</span>
                 <h3>{item.name}</h3>
-                <strong>${item.price.toFixed(2)}</strong>
+                <strong>₹{item.price.toLocaleString('en-IN')}</strong>
               </div>
               <div className="qty-controls">
                 <button type="button" onClick={() => updateQuantity(item._id, item.quantity - 1)}>
@@ -50,9 +50,9 @@ export default function Cart() {
 
         <aside className="summary-panel">
           <h2>Order summary</h2>
-          <p><span>Subtotal</span><strong>${summary.subtotal.toFixed(2)}</strong></p>
-          <p><span>Shipping</span><strong>{summary.shipping === 0 ? 'Free' : `$${summary.shipping.toFixed(2)}`}</strong></p>
-          <p className="summary-total"><span>Total</span><strong>${summary.total.toFixed(2)}</strong></p>
+          <p><span>Subtotal</span><strong>₹{summary.subtotal.toLocaleString('en-IN')}</strong></p>
+          <p><span>Shipping</span><strong>{summary.shipping === 0 ? 'Free' : `₹${summary.shipping.toLocaleString('en-IN')}`}</strong></p>
+          <p className="summary-total"><span>Total</span><strong>₹{summary.total.toLocaleString('en-IN')}</strong></p>
           <Link className="primary-btn link-btn wide" to="/checkout">Checkout</Link>
         </aside>
       </div>

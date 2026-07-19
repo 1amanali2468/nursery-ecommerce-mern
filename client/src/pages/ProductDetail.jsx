@@ -30,7 +30,7 @@ export default function ProductDetail() {
           <span className="category">{product.category}</span>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
-          <strong className="detail-price">${product.price.toFixed(2)}</strong>
+          <strong className="detail-price">₹{product.price.toLocaleString('en-IN')}</strong>
 
           <div className="detail-facts">
             <span><Sun /> {product.sunlight}</span>

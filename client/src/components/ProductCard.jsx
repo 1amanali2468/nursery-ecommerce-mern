@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
             <span className="category">{product.category}</span>
             <h3>{product.name}</h3>
           </div>
-          <strong>${product.price.toFixed(2)}</strong>
+          <strong>₹{product.price.toLocaleString('en-IN')}</strong>
         </div>
 
         <p>{product.description}</p>

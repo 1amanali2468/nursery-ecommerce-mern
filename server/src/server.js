@@ -8,6 +8,7 @@ import { connectDatabase } from './config/db.js';
 import { ensureProducts } from './data/ensureProducts.js';
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/auth', authRoutes);
 
 app.use(express.static(clientDistPath));
 

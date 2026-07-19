@@ -42,7 +42,7 @@ export const createOrder = async (req, res, next) => {
   const itemsPrice = roundMoney(
     orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
   );
-  const shippingPrice = itemsPrice >= 75 ? 0 : 8.99;
+  const shippingPrice = itemsPrice >= 499 ? 0 : 99;
   const totalPrice = roundMoney(itemsPrice + shippingPrice);
 
   const order = await Order.create({

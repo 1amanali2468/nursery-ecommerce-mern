@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['Indoor Plants', 'Outdoor Plants', 'Seeds', 'Planters', 'Care Kits']
+      enum: ['Indoor Plants', 'Outdoor Plants', 'Seeds', 'Planters', 'Care Kits', 'Accessories']
     },
     description: { type: String, required: true },
     price: { type: Number, required: true, min: 0 },

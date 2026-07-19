@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import { submitOrder } from '../api.js';
 import { useCart } from '../context/CartContext.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const emptyForm = {
   name: '',
@@ -17,10 +18,21 @@ const emptyForm = {
 export default function Checkout() {
   const navigate = useNavigate();
   const { clearCart, items, summary } = useCart();
+  const { user } = useAuth();
   const [form, setForm] = useState(emptyForm);
   const [orderId, setOrderId] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setForm(prev => ({
+        ...prev,
+        name: prev.name || user.name || '',
+        email: prev.email || user.email || ''
+      }));
+    }
+  }, [user]);
 
   const updateField = event => {
     setForm(current => ({ ...current, [event.target.name]: event.target.value }));
@@ -55,6 +67,16 @@ export default function Checkout() {
       setSubmitting(false);
     }
   };
+
+  if (!user) {
+    return (
+      <section className="section empty-cart">
+        <h1>Please log in to checkout.</h1>
+        <p>You need to be logged in to your GreenNest account to place an order.</p>
+        <Link className="primary-btn link-btn" to={`/login?redirect=/checkout`}>Log in to continue</Link>
+      </section>
+    );
+  }
 
   if (items.length === 0 && !orderId) {
     return (
@@ -96,7 +118,7 @@ export default function Checkout() {
 
         <div className="checkout-total span-two">
           <span>Total</span>
-          <strong>${summary.total.toFixed(2)}</strong>
+          <strong>₹{summary.total.toLocaleString('en-IN')}</strong>
         </div>
 
         <button className="primary-btn span-two" type="submit" disabled={submitting}>
