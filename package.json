@@ -1,0 +1,16 @@
+{
+  "name": "nursery-ecommerce-mern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A MERN e-commerce website for a plant nursery.",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
